@@ -45,6 +45,45 @@ footer{margin-top:56px;padding-top:24px;border-top:1px solid #1A1A1F;
   <h1>把电视遥控器改造成<br><span>语音助手 + 自定义按键 + 手机遥控</span></h1>
   <p class="lead">基于 Android AccessibilityService 的完整方案，全部功能在真机上跑通并截图验证。</p>
 
+  <div style="margin:0 0 40px;text-align:center">
+    <img src="docs/images/tv-product.jpg" alt="Sony BRAVIA XR-65X90J"
+      style="max-width:100%;border-radius:16px;border:1px solid #26262D">
+    <div class="cap" style="color:#6E6E78;font-size:13px;margin-top:10px">
+      Sony BRAVIA XR-65X90J · 65 英寸 4K 全阵列 LED
+    </div>
+  </div>
+
+  <h2>核心功能</h2>
+
+  <div class="grid" style="margin-bottom:26px">
+    <div class="card"><div class="n">01</div><h3>让原厂桌面焕然一新</h3>
+      <p>桌面保留原厂质感，改变的是「到内容」的路径长度：原来翻列表按 5 次方向键，现在按一下电视键。</p></div>
+    <div class="card"><div class="n">02</div><h3>自定义 4 个空闲按键</h3>
+      <p>电视键、视频键、屏显键、主页长按——原生几乎用不到的四个键，重新分配成高频入口，长按 2 秒随时改绑。</p></div>
+    <div class="card"><div class="n">03</div><h3>语音搜索全面升级</h3>
+      <p>从「只能搜影视」升级为「通用转写 + 指令执行」，有输入框自动填字，没输入框才当指令。</p></div>
+  </div>
+
+  <h2>三个真实场景</h2>
+  <table>
+    <tr><th>场景</th><th>旧流程</th><th>新流程</th></tr>
+    <tr>
+      <td><b>晚上想看电影</b></td>
+      <td>主页 → 翻 4 次找影视仓 → 搜索 → 方向键选 12 个字母</td>
+      <td>长按语音键说「我想看流浪地球」，2 秒后已在搜索结果页</td>
+    </tr>
+    <tr>
+      <td><b>搜索框输入中文</b></td>
+      <td>方向键选拼音 → 翻页找字 → 一个个确认（约 20 秒）</td>
+      <td>按屏显键 → 手机扫码 → 手机打字 → 电视实时同步</td>
+    </tr>
+    <tr>
+      <td><b>遥控器不在手边</b></td>
+      <td>只能起身找</td>
+      <td>手机扫码后当触控板：单指移动光标、轻点选中、双指翻页</td>
+    </tr>
+  </table>
+
   <h2>适配型号</h2>
   <table>
     <tr><th>项目</th><th>值</th></tr>
@@ -78,6 +117,13 @@ footer{margin-top:56px;padding-top:24px;border-top:1px solid #1A1A1F;
   <p style="color:#8A8A96;font-size:13.5px;margin-bottom:16px">
     索尼标准语音遥控（随 XR-65X90J 附赠）· 黑色细长条 · 蓝牙连接 · 长约 19cm 宽约 4.5cm
   </p>
+  <div style="text-align:center;margin-bottom:22px">
+    <img src="docs/images/tv-remote.jpg" alt="索尼语音遥控器"
+      style="max-width:260px;width:100%;border-radius:14px;border:1px solid #26262D">
+    <div style="color:#6E6E78;font-size:12.5px;margin-top:8px">
+      实拍：顶部圆形方向区，语音键在下方，中间「屏显」「电视」「网络视频」三键是本次改造重点
+    </div>
+  </div>
   <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;margin-bottom:20px">
     <div style="width:180px;background:linear-gradient(170deg,#1C1C22,#111116);border:1px solid #2A2A33;
       border-radius:22px;padding:14px 12px;display:flex;flex-direction:column;gap:8px;flex:0 0 auto">
