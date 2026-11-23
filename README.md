@@ -21,6 +21,21 @@
 | 屏幕分辨率 | 1920 × 1080 |
 | 遥控器 | 索尼原装蓝牙语音遥控（含语音键 / 屏显键） |
 
+### 硬件规格速查
+
+| 项 | 参数 |
+|---|---|
+| 屏幕 | 65 英寸 4K（3840×2160），全阵列 LED |
+| 整机尺寸（无底座） | 1452 × 834 × 72 mm |
+| 重量（无底座） | 22.9 kg |
+| VESA | 300 × 300 mm |
+| HDMI | 4 路（1 路 eARC） |
+| 无线 | Wi-Fi 双频 + 蓝牙 4.2 + Chromecast + AirPlay 硬件支持 |
+
+> 关键细节：**系统 UI 层运行在 1080p**（不是 4K），所有坐标计算按 1920×1080。
+
+完整规格与遥控器布局见 [docs/HARDWARE.md](docs/HARDWARE.md)。
+
 ### 理论兼容范围
 
 **基本可用**（需微调按键码）：
@@ -45,6 +60,18 @@ adb shell getprop ro.vendor.nrdp.modelgroup
 
 ---
 
+## 文档索引
+
+| 文档 | 内容 |
+|---|---|
+| [docs/HARDWARE.md](docs/HARDWARE.md) | 电视完整规格、遥控器外形与按键布局、键码对照 |
+| [docs/FEATURES.md](docs/FEATURES.md) | 每个按键的详细行为、手机端全部手势 |
+| [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md) | 45 条需求演进记录（含踩坑顺序） |
+| [docs/PROMPT.md](docs/PROMPT.md) | 复刻这个项目的提示词 + 环境坑排查 |
+| [docs/AIRPLAY.md](docs/AIRPLAY.md) | AirPlay 投屏方案、部署步骤、踩坑 |
+
+---
+
 ## 二、功能清单
 
 详见 [docs/FEATURES.md](docs/FEATURES.md)，摘要如下：
@@ -56,6 +83,7 @@ adb shell getprop ro.vendor.nrdp.modelgroup
 | **一键加速** | 长按主页键清理后台，完成时洒下彩带特效 |
 | **扫码输入** | 按屏显键弹出二维码，手机扫码后在网页里打字，实时同步到电视输入框 |
 | **手机遥控** | 手机网页提供触摸板：单指移动指针、轻点单击、长按、双指滚动、三大导航键 |
+| **AirPlay 投屏** | 装 android-airplay-server，iOS/Mac 可直接投屏（需 root，见 [AIRPLAY.md](docs/AIRPLAY.md)） |
 
 ---
 

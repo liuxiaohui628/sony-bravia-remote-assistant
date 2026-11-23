@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sony BRAVIA 遥控器增强助手</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0A0A0C;color:#E8E8EC;font-family:-apple-system,"PingFang SC",sans-serif;line-height:1.7}
+.wrap{max-width:960px;margin:0 auto;padding:56px 24px 80px}
+.badge{display:inline-block;background:#13243A;color:#4DA8FF;border:1px solid #1E4670;
+  border-radius:100px;padding:5px 14px;font-size:12px;letter-spacing:.5px;margin-bottom:20px}
+h1{font-size:36px;font-weight:700;letter-spacing:-.5px;line-height:1.25;margin-bottom:14px}
+h1 span{background:linear-gradient(100deg,#4DA8FF,#9B6BFF 55%,#FF6BB5);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lead{color:#8A8A96;font-size:16px;margin-bottom:36px}
+h2{font-size:20px;font-weight:600;margin:44px 0 16px;padding-left:12px;
+  border-left:3px solid #2E9BFF}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0}
+th{text-align:left;color:#8A8A96;font-weight:500;font-size:12.5px;letter-spacing:.3px;
+  padding:9px 12px;border-bottom:1px solid #26262D}
+td{padding:11px 12px;border-bottom:1px solid #1A1A1F;vertical-align:top}
+tr:hover td{background:#0F0F14}
+code{background:#16161B;color:#7DD3FC;padding:2px 6px;border-radius:5px;
+  font-size:.88em;font-family:ui-monospace,Menlo,monospace}
+.shot{margin:18px 0 30px}
+.shot img{width:100%;border-radius:14px;border:1px solid #26262D;display:block}
+.cap{color:#6E6E78;font-size:13px;margin-top:9px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:16px 0}
+.card{background:#121217;border:1px solid #22222A;border-radius:14px;padding:18px}
+.card h3{font-size:15px;font-weight:600;margin-bottom:8px;color:#fff}
+.card p{font-size:13.5px;color:#8A8A96}
+.card .n{color:#4DA8FF;font-size:11px;letter-spacing:1px;margin-bottom:6px}
+.note{background:#171208;border:1px solid #3D2E10;border-radius:12px;padding:16px 18px;
+  font-size:13.5px;color:#D6B87A;margin:18px 0}
+.ok{color:#4ADE80}
+footer{margin-top:56px;padding-top:24px;border-top:1px solid #1A1A1F;
+  color:#5C5C66;font-size:12.5px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="badge">实机验证 · Sony BRAVIA XR-65X90J</div>
+  <h1>把电视遥控器改造成<br><span>语音助手 + 自定义按键 + 手机遥控</span></h1>
+  <p class="lead">基于 Android AccessibilityService 的完整方案，全部功能在真机上跑通并截图验证。</p>
+
+  <h2>适配型号</h2>
+  <table>
+    <tr><th>项目</th><th>值</th></tr>
+    <tr><td>商品型号</td><td>Sony BRAVIA XR-65X90J</td></tr>
+    <tr><td>系统代号</td><td><code>BRAVIA_VH2</code> / <code>BRAVIA_VH2_M_CN</code>（国行）</td></tr>
+    <tr><td>芯片平台</td><td><code>Valhalla_CHD</code> · <code>SONYANDROIDTV2021M5</code></td></tr>
+    <tr><td>系统版本</td><td>Android 10（SDK 29）</td></tr>
+    <tr><td>分辨率</td><td>1920 × 1080</td></tr>
+  </table>
+  <p style="color:#8A8A96;font-size:13.5px;margin-top:10px">
+    理论兼容：Sony BRAVIA 2019–2023 年 Android TV 机型（X8000G ~ X95L），同代 MediaTek M5/M6 平台。
+    判断方法：<code>adb shell getprop ro.product.device</code> 输出含 <code>BRAVIA_VH2</code> 即高度兼容。
+  </p>
+
+  <h2>硬件规格</h2>
+  <table>
+    <tr><th>项目</th><th>参数</th></tr>
+    <tr><td>屏幕</td><td>65 英寸 4K（3840×2160）· 全阵列 LED</td></tr>
+    <tr><td>整机尺寸（无底座）</td><td>1452 × 834 × 72 mm</td></tr>
+    <tr><td>重量（无底座）</td><td>22.9 kg</td></tr>
+    <tr><td>VESA 孔距</td><td>300 × 300 mm</td></tr>
+    <tr><td>HDMI</td><td>4 路（含 1 路 eARC）</td></tr>
+    <tr><td>无线</td><td>Wi-Fi 双频 · 蓝牙 4.2 · Chromecast · AirPlay 硬件支持</td></tr>
+  </table>
+  <div class="note" style="background:#0D1620;border-color:#1B3247;color:#7FB4E0">
+    关键细节：虽然面板是 4K，但 <b>Android 系统 UI 运行在 1080p</b>（1920×1080），
+    所有悬浮窗坐标、光晕尺寸都按 1080p 计算，不是 4K。
+  </div>
+
+  <h2>遥控器布局</h2>
+  <p style="color:#8A8A96;font-size:13.5px;margin-bottom:16px">
+    索尼标准语音遥控（随 XR-65X90J 附赠）· 黑色细长条 · 蓝牙连接 · 长约 19cm 宽约 4.5cm
+  </p>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;margin-bottom:20px">
+    <div style="width:180px;background:linear-gradient(170deg,#1C1C22,#111116);border:1px solid #2A2A33;
+      border-radius:22px;padding:14px 12px;display:flex;flex-direction:column;gap:8px;flex:0 0 auto">
+      <div style="display:flex;gap:6px;justify-content:space-between">
+        <span style="flex:1;text-align:center;font-size:10px;color:#7DD3FC;background:#12212E;
+          border-radius:7px;padding:5px 0">⏻</span>
+        <span style="flex:1.4;text-align:center;font-size:10px;color:#FFB86B;background:#2A1E10;
+          border-radius:7px;padding:5px 0;font-weight:600">TV</span>
+        <span style="flex:1.4;text-align:center;font-size:10px;color:#FF8FB1;background:#2A1219;
+          border-radius:7px;padding:5px 0;font-weight:600">视频</span>
+      </div>
+      <div style="height:74px;background:#16161B;border-radius:50%;display:flex;
+        align-items:center;justify-content:center;margin:4px 12px">
+        <span style="font-size:11px;color:#5C5C66">方向键 + OK</span>
+      </div>
+      <div style="display:flex;gap:6px">
+        <span style="flex:1;text-align:center;font-size:10px;color:#9BE8C4;background:#10241A;
+          border-radius:7px;padding:5px 0;font-weight:600">⌂</span>
+        <span style="flex:1;text-align:center;font-size:10px;color:#8A8A96;background:#1A1A20;
+          border-radius:7px;padding:5px 0">←</span>
+        <span style="flex:1;text-align:center;font-size:10px;color:#A9B6FF;background:#151829;
+          border-radius:7px;padding:5px 0;font-weight:600">i+</span>
+      </div>
+      <div style="display:flex;gap:6px">
+        <span style="flex:1;text-align:center;font-size:10px;color:#5C5C66;background:#1A1A20;
+          border-radius:7px;padding:5px 0">VOL</span>
+        <span style="flex:1;text-align:center;font-size:10px;color:#5C5C66;background:#1A1A20;
+          border-radius:7px;padding:5px 0">CH</span>
+      </div>
+      <div style="text-align:center;font-size:22px;background:#1F5DD8;border-radius:50%;
+        width:44px;height:44px;line-height:44px;margin:6px auto 0">🎤</div>
+    </div>
+    <div style="flex:1;min-width:260px">
+      <table>
+        <tr><th>按键</th><th>原始功能</th><th>改造后</th></tr>
+        <tr><td><b style="color:#7DD3FC">🎤 语音键</b></td><td>索尼语音搜索</td><td>长按说话 → 自建语音助手</td></tr>
+        <tr><td><b style="color:#FFB86B">TV 电视键</b></td><td>切电视频道</td><td>短按开影视仓 / 长按选应用</td></tr>
+        <tr><td><b style="color:#FF8FB1">视频键</b></td><td>切视频输入</td><td>短按开云视听 / 长按选应用</td></tr>
+        <tr><td><b style="color:#A9B6FF">i+ 屏显键</b></td><td>显示信号信息</td><td>同时切换二维码面板</td></tr>
+        <tr><td><b style="color:#9BE8C4">⌂ 主页键</b></td><td>回主页</td><td>长按清后台 + 彩带特效</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>按键映射</h2>
+  <table>
+    <tr><th>按键</th><th>键码</th><th>点按</th><th>长按</th></tr>
+    <tr><td><b>语音键</b></td><td><code>SEARCH</code> 84</td><td>—</td><td><b>按住说话</b>，松手识别</td></tr>
+    <tr><td><b>电视键</b></td><td><code>TV</code> 170</td><td>打开绑定应用（默认影视仓）</td><td>2 秒倒计时 → 应用选择器</td></tr>
+    <tr><td><b>视频键</b></td><td><code>VIDEO</code> 203</td><td>打开绑定应用（默认云视听小电视）</td><td>2 秒倒计时 → 应用选择器</td></tr>
+    <tr><td><b>屏显键</b></td><td><code>INFO</code> 165</td><td>二维码面板显示/隐藏</td><td>同点按</td></tr>
+    <tr><td><b>主页键</b></td><td><code>HOME</code> 3</td><td>系统默认</td><td>清理后台 + 彩带特效</td></tr>
+  </table>
+
+  <h2>界面截图</h2>
+
+  <div class="shot">
+    <img src="docs/images/shot_hud.png" alt="语音 HUD">
+    <div class="cap">① 语音识别 HUD — 底部 6 色流体光晕 + 文字胶囊 + 7 柱声波</div>
+  </div>
+
+  <div class="shot">
+    <img src="docs/images/shot_countdown.png" alt="长按倒计时">
+    <div class="cap">② 长按倒计时 — 圆圈进度 + 数字 + 「N 秒后设置按键」+「松开取消」</div>
+  </div>
+
+  <div class="shot">
+    <img src="docs/images/chooser.png" alt="应用选择器">
+    <div class="cap">③ 应用选择器 — 长按电视键满 2 秒后弹出，当前绑定项带 ✓</div>
+  </div>
+
+  <div class="shot">
+    <img src="docs/images/qr_verify.png" alt="扫码面板">
+    <div class="cap">④ 二维码扫码面板 — 按屏显键弹出，与原生时间插件同步</div>
+  </div>
+
+  <div class="shot">
+    <img src="docs/images/shot_mobile.png" alt="手机端">
+    <div class="cap">⑤ 手机端远程输入 — 输入框实时同步 + 深空灰触摸板 + 三大导航键</div>
+  </div>
+
+  <div class="shot">
+    <img src="docs/images/pointer2.png" alt="屏幕光标">
+    <div class="cap">⑥ 手机控制的光标 — 单指滑动移动，1 秒无操作淡出</div>
+  </div>
+
+  <h2>功能模块</h2>
+  <div class="grid">
+    <div class="card"><div class="n">01</div><h3>语音助手</h3>
+      <p>长按语音键说话，识别后填入输入框或执行指令。支持打开应用、调音量、影视搜索、卸载等。</p></div>
+    <div class="card"><div class="n">02</div><h3>自定义按键</h3>
+      <p>电视/视频键可自由绑定应用，短按打开、长按 2 秒重选。已在前台时不重复启动。</p></div>
+    <div class="card"><div class="n">03</div><h3>一键加速</h3>
+      <p>长按主页键清理后台，完成时洒下 34 片粉色彩带。</p></div>
+    <div class="card"><div class="n">04</div><h3>扫码输入</h3>
+      <p>按屏显键弹出二维码，手机扫码后打字，电视输入框实时同步，无需点发送。</p></div>
+    <div class="card"><div class="n">05</div><h3>手机遥控</h3>
+      <p>触摸板单指移动、轻点单击、长按、双指滚动，底部三大导航键。</p></div>
+    <div class="card"><div class="n">06</div><h3>稳定性设计</h3>
+      <p>识别器忙重试、引擎心跳重建、连按保护、1.2 秒兜底收起、长按锁键。</p></div>
+  </div>
+
+  <h2>技术要点</h2>
+  <table>
+    <tr><th>能力</th><th>实现</th></tr>
+    <tr><td>按键拦截</td><td><code>onKeyEvent</code> + <code>flagRequestFilterKeyEvents</code></td></tr>
+    <tr><td>语音识别</td><td><code>SpeechRecognizer</code> 调索尼私有 VoiceRecognitionService</td></tr>
+    <tr><td>文字填入</td><td><code>ACTION_SET_TEXT</code></td></tr>
+    <tr><td>光标/点击</td><td>全屏 Overlay + <code>dispatchGesture</code></td></tr>
+    <tr><td>手机通信</td><td>内置 <code>ServerSocket</code> HTTP 服务（8080）</td></tr>
+    <tr><td>二维码</td><td>zxing-core 本地生成</td></tr>
+  </table>
+
+  <div class="note">
+    <b>必开的三项无障碍配置</b>（缺一不可）：<br>
+    <code>canRequestFilterKeyEvents="true"</code> 拦截遥控器按键<br>
+    <code>canPerformGestures="true"</code> 模拟点击滑动<br>
+    <code>canRetrieveWindowContent="true"</code> 读取界面结构
+  </div>
+
+  <h2>AirPlay 投屏</h2>
+  <p style="color:#8A8A96;font-size:13.5px">
+    电视硬件支持 AirPlay 2（规格表标注 <code>APPLE AIRPLAY: Yes</code>），但国行固件未内置接收端。
+    方案：装开源的 <b>android-airplay-server</b>（<code>io.github.jqssun.airplay</code> v0.0.36）。
+  </p>
+  <table>
+    <tr><th>项</th><th>说明</th></tr>
+    <tr><td>原理</td><td>电视上跑 AirPlay 接收服务（RTSP + H.264 解码）</td></tr>
+    <tr><td>依赖</td><td>root（su）+ <code>setenforce 0</code></td></tr>
+    <tr><td>连接</td><td>iPhone 控制中心 → 屏幕镜像 → 选电视</td></tr>
+    <tr><td>语音联动</td><td>说「打开隔空播放」即可启动</td></tr>
+    <tr><td>短板</td><td>4K 降采样到 1080p · 首次握手 2-3 秒 · iOS 17+ 需重新配对</td></tr>
+  </table>
+  <div class="note">
+    投屏时系统被占用，<b>语音助手和手机遥控会失效</b>，两者场景互斥。
+  </div>
+
+  <h2>已知限制</h2>
+  <table>
+    <tr><th>问题</th><th>应对</th></tr>
+    <tr><td>卸载重装后网络被切断（<code>EPERM</code>）</td><td>standby bucket 掉到 5，再次重装可重置为 50</td></tr>
+    <tr><td>重装丢录音权限（<code>code=9</code>）</td><td><code>pm grant RECORD_AUDIO</code></td></tr>
+    <tr><td>重装丢悬浮窗权限</td><td><code>appops set SYSTEM_ALERT_WINDOW allow</code></td></tr>
+    <tr><td>影视仓用自定义键盘</td><td>改判界面是否有「请输入」提示</td></tr>
+  </table>
+
+  <footer>
+    个人自用项目 · 实机验证于 Sony BRAVIA XR-65X90J<br>
+    <span class="ok">22 项端到端测试全部通过</span>
+  </footer>
+
+</div>
+</body>
+</html>
