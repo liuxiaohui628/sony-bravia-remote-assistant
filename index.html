@@ -21,6 +21,8 @@ th{text-align:left;color:#8A8A96;font-weight:500;font-size:12.5px;letter-spacing
   padding:9px 12px;border-bottom:1px solid #26262D}
 td{padding:11px 12px;border-bottom:1px solid #1A1A1F;vertical-align:top}
 tr:hover td{background:#0F0F14}
+.btn-icon{width:36px;height:36px;border-radius:9px;vertical-align:middle;
+  margin-right:10px;object-fit:cover;box-shadow:0 1px 3px rgba(0,0,0,.5)}
 code{background:#16161B;color:#7DD3FC;padding:2px 6px;border-radius:5px;
   font-size:.88em;font-family:ui-monospace,Menlo,monospace}
 .shot{margin:18px 0 30px}
@@ -57,9 +59,9 @@ footer{margin-top:56px;padding-top:24px;border-top:1px solid #1A1A1F;
 
   <div class="grid" style="margin-bottom:26px">
     <div class="card"><div class="n">01</div><h3>让原厂桌面焕然一新</h3>
-      <p>桌面保留原厂质感，改变的是「到内容」的路径长度：原来翻列表按 5 次方向键，现在按一下电视键。</p></div>
+      <p>桌面保留原厂质感，改变的是「到内容」的路径长度：原来翻列表按 5 次方向键，现在按一下电视。</p></div>
     <div class="card"><div class="n">02</div><h3>自定义 4 个空闲按键</h3>
-      <p>电视键、视频键、屏显键、主页长按——原生几乎用不到的四个键，重新分配成高频入口，长按 2 秒随时改绑。</p></div>
+      <p>电视、视频、屏显、主页长按——原生几乎用不到的四个键，重新分配成高频入口，长按 2 秒随时改绑。</p></div>
     <div class="card"><div class="n">03</div><h3>语音搜索全面升级</h3>
       <p>从「只能搜影视」升级为「通用转写 + 指令执行」，有输入框自动填字，没输入框才当指令。</p></div>
   </div>
@@ -70,12 +72,12 @@ footer{margin-top:56px;padding-top:24px;border-top:1px solid #1A1A1F;
     <tr>
       <td><b>晚上想看电影</b></td>
       <td>主页 → 翻 4 次找影视仓 → 搜索 → 方向键选 12 个字母</td>
-      <td>长按语音键说「我想看流浪地球」，2 秒后已在搜索结果页</td>
+      <td>长按语音说「我想看流浪地球」，2 秒后已在搜索结果页</td>
     </tr>
     <tr>
       <td><b>搜索框输入中文</b></td>
       <td>方向键选拼音 → 翻页找字 → 一个个确认（约 20 秒）</td>
-      <td>按屏显键 → 手机扫码 → 手机打字 → 电视实时同步</td>
+      <td>按屏显 → 手机扫码 → 手机打字 → 电视实时同步</td>
     </tr>
     <tr>
       <td><b>遥控器不在手边</b></td>
@@ -100,37 +102,32 @@ footer{margin-top:56px;padding-top:24px;border-top:1px solid #1A1A1F;
 
   <h2>硬件规格</h2>
   <table>
-    <tr><th>项目</th><th>参数</th></tr>
-    <tr><td>屏幕</td><td>65 英寸 4K（3840×2160）· 全阵列 LED</td></tr>
-    <tr><td>整机尺寸（无底座）</td><td>1452 × 834 × 72 mm</td></tr>
-    <tr><td>重量（无底座）</td><td>22.9 kg</td></tr>
-    <tr><td>VESA 孔距</td><td>300 × 300 mm</td></tr>
-    <tr><td>HDMI</td><td>4 路（含 1 路 eARC）</td></tr>
-    <tr><td>无线</td><td>Wi-Fi 双频 · 蓝牙 4.2 · Chromecast · AirPlay 硬件支持</td></tr>
-  </table>
-  <div class="note" style="background:#0D1620;border-color:#1B3247;color:#7FB4E0">
-    关键细节：虽然面板是 4K，但 <b>Android 系统 UI 运行在 1080p</b>（1920×1080），
-    所有悬浮窗坐标、光晕尺寸都按 1080p 计算，不是 4K。
-  </div>
-
-  <h2>遥控器布局</h2>
-  <p style="color:#8A8A96;font-size:13.5px;margin-bottom:16px">
-    索尼标准语音遥控（随 XR-65X90J 附赠）· 黑色细长条 · 蓝牙连接 · 长约 19cm 宽约 4.5cm
-  </p>
-  <div style="text-align:center;margin-bottom:22px">
-    <img src="docs/images/tv-remote.jpg" alt="索尼语音遥控器"
-      style="max-width:260px;width:100%;border-radius:14px;border:1px solid #26262D">
-    <div style="color:#6E6E78;font-size:12.5px;margin-top:8px">
-      实拍：顶部圆形方向区，语音键在下方，中间「屏显」「电视」「网络视频」三键是本次改造重点
-    </div>
-  </div>
-  <table>
-    <tr><th>顺序</th><th>按键</th><th>原生功能</th><th>改造后</th></tr>
-    <tr><td>1</td><td><b style="color:#7DD3FC">语音键</b></td><td>索尼语音搜索</td><td>长按说话 → 自建语音助手</td></tr>
-    <tr><td>2</td><td><b style="color:#FFB86B">电视键</b></td><td>切天线/有线频道</td><td>短按开影视仓 / 长按 2 秒改绑</td></tr>
-    <tr><td>3</td><td><b style="color:#FF8FB1">视频键</b></td><td>切视频输入源</td><td>短按开云视听 / 长按 2 秒改绑</td></tr>
-    <tr><td>4</td><td><b style="color:#A9B6FF">屏显键</b></td><td>显示信号格式信息</td><td>切换二维码扫码面板</td></tr>
-    <tr><td>5</td><td><b style="color:#9BE8C4">主页键</b></td><td>回主页（长按无定义）</td><td>长按 2 秒清理后台 + 彩带</td></tr>
+    <tr><th style="width:56px">顺序</th><th>按键</th><th>原生功能</th><th>改造后</th></tr>
+    <tr>
+      <td>1</td>
+      <td><img src="docs/images/btn-voice.png" class="btn-icon">语音</td>
+      <td>索尼语音搜索</td><td>长按说话 → 自建语音助手</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><img src="docs/images/btn-tv.png" class="btn-icon">电视</td>
+      <td>切天线/有线频道</td><td>短按开影视仓 / 长按 2 秒改绑</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><img src="docs/images/btn-video.png" class="btn-icon">视频</td>
+      <td>切视频输入源</td><td>短按开云视听 / 长按 2 秒改绑</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><img src="docs/images/btn-info.png" class="btn-icon">屏显</td>
+      <td>显示信号格式信息</td><td>切换二维码扫码面板</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><img src="docs/images/btn-home.png" class="btn-icon">主页</td>
+      <td>回主页（长按无定义）</td><td>长按 2 秒清理后台 + 彩带</td>
+    </tr>
   </table>
   <p style="color:#6E6E78;font-size:12.5px;margin-top:10px">
     对应遥控器上从上到下的顺序：语音 → 电视 → 视频 → 屏显 → 主页
@@ -139,11 +136,11 @@ footer{margin-top:56px;padding-top:24px;border-top:1px solid #1A1A1F;
   <h2>按键映射</h2>
   <table>
     <tr><th>按键</th><th>键码</th><th>点按</th><th>长按</th></tr>
-    <tr><td><b>语音键</b></td><td><code>SEARCH</code> 84</td><td>—</td><td><b>按住说话</b>，松手识别</td></tr>
-    <tr><td><b>电视键</b></td><td><code>TV</code> 170</td><td>打开绑定应用（默认影视仓）</td><td>2 秒倒计时 → 应用选择器</td></tr>
-    <tr><td><b>视频键</b></td><td><code>VIDEO</code> 203</td><td>打开绑定应用（默认云视听小电视）</td><td>2 秒倒计时 → 应用选择器</td></tr>
-    <tr><td><b>屏显键</b></td><td><code>INFO</code> 165</td><td>二维码面板显示/隐藏</td><td>同点按</td></tr>
-    <tr><td><b>主页键</b></td><td><code>HOME</code> 3</td><td>系统默认</td><td>清理后台 + 彩带特效</td></tr>
+    <tr><td><b>语音</b></td><td><code>SEARCH</code> 84</td><td>—</td><td><b>按住说话</b>，松手识别</td></tr>
+    <tr><td><b>电视</b></td><td><code>TV</code> 170</td><td>打开绑定应用（默认影视仓）</td><td>2 秒倒计时 → 应用选择器</td></tr>
+    <tr><td><b>视频</b></td><td><code>VIDEO</code> 203</td><td>打开绑定应用（默认云视听小电视）</td><td>2 秒倒计时 → 应用选择器</td></tr>
+    <tr><td><b>屏显</b></td><td><code>INFO</code> 165</td><td>二维码面板显示/隐藏</td><td>同点按</td></tr>
+    <tr><td><b>主页</b></td><td><code>HOME</code> 3</td><td>系统默认</td><td>清理后台 + 彩带特效</td></tr>
   </table>
 
   <h2>界面截图</h2>
@@ -153,54 +150,58 @@ footer{margin-top:56px;padding-top:24px;border-top:1px solid #1A1A1F;
 
   <div style="border:1px dashed #34343F;border-radius:14px;padding:52px 20px;
     text-align:center;margin:14px 0;background:#0D0D11">
-    <div style="font-size:15px;color:#A0A0AC;font-weight:500">① 语音键 · 长按说话</div>
+    <div style="font-size:15px;color:#A0A0AC;font-weight:500">① 语音 · 长按说话</div>
     <div style="font-size:12.5px;color:#5C5C66;margin-top:7px">底部流体光晕 + 文字胶囊 + 声波柱</div>
     <div style="font-size:11px;color:#3F3F48;margin-top:10px;letter-spacing:1px">截图待补充</div>
   </div>
 
   <div style="border:1px dashed #34343F;border-radius:14px;padding:52px 20px;
     text-align:center;margin:14px 0;background:#0D0D11">
-    <div style="font-size:15px;color:#A0A0AC;font-weight:500">② 电视键 · 长按 2 秒</div>
+    <div style="font-size:15px;color:#A0A0AC;font-weight:500">② 电视 · 长按 2 秒</div>
     <div style="font-size:12.5px;color:#5C5C66;margin-top:7px">圆形倒计时 + 数字 + 「N 秒后设置按键」→ 应用选择器</div>
     <div style="font-size:11px;color:#3F3F48;margin-top:10px;letter-spacing:1px">截图待补充</div>
   </div>
 
   <div style="border:1px dashed #34343F;border-radius:14px;padding:52px 20px;
     text-align:center;margin:14px 0;background:#0D0D11">
-    <div style="font-size:15px;color:#A0A0AC;font-weight:500">③ 视频键 · 长按 2 秒</div>
+    <div style="font-size:15px;color:#A0A0AC;font-weight:500">③ 视频 · 长按 2 秒</div>
     <div style="font-size:12.5px;color:#5C5C66;margin-top:7px">同上，默认绑定云视听小电视</div>
     <div style="font-size:11px;color:#3F3F48;margin-top:10px;letter-spacing:1px">截图待补充</div>
   </div>
 
   <div style="border:1px dashed #34343F;border-radius:14px;padding:52px 20px;
     text-align:center;margin:14px 0;background:#0D0D11">
-    <div style="font-size:15px;color:#A0A0AC;font-weight:500">④ 屏显键 · 点按</div>
+    <div style="font-size:15px;color:#A0A0AC;font-weight:500">④ 屏显 · 点按</div>
     <div style="font-size:12.5px;color:#5C5C66;margin-top:7px">二维码面板滑入，与原生时间插件同步</div>
     <div style="font-size:11px;color:#3F3F48;margin-top:10px;letter-spacing:1px">截图待补充</div>
   </div>
 
   <div style="border:1px dashed #34343F;border-radius:14px;padding:52px 20px;
     text-align:center;margin:14px 0;background:#0D0D11">
-    <div style="font-size:15px;color:#A0A0AC;font-weight:500">⑤ 主页键 · 长按 2 秒</div>
+    <div style="font-size:15px;color:#A0A0AC;font-weight:500">⑤ 主页 · 长按 2 秒</div>
     <div style="font-size:12.5px;color:#5C5C66;margin-top:7px">清理后台完成，粉色纸屑彩带从顶部洒落</div>
     <div style="font-size:11px;color:#3F3F48;margin-top:10px;letter-spacing:1px">截图待补充</div>
   </div>
 
-  <div class="shot">
-    <img src="docs/images/shot_mobile.png" alt="手机端远程输入">
-    <div class="cap">⑥ 手机端远程输入 — 输入框实时同步 + 深空灰触摸板 + 三大导航键</div>
+  <div style="border:1px dashed #34343F;border-radius:14px;padding:52px 20px;
+    text-align:center;margin:14px 0;background:#0D0D11">
+    <div style="font-size:15px;color:#A0A0AC;font-weight:500">⑥ 手机端远程输入</div>
+    <div style="font-size:12.5px;color:#5C5C66;margin-top:7px">
+      输入框实时同步 + 深空灰触摸板 + 三大导航键
+    </div>
+    <div style="font-size:11px;color:#3F3F48;margin-top:10px;letter-spacing:1px">截图待补充</div>
   </div>
 
   <h2>功能模块</h2>
   <div class="grid">
     <div class="card"><div class="n">01</div><h3>语音助手</h3>
-      <p>长按语音键说话，识别后填入输入框或执行指令。支持打开应用、调音量、影视搜索、卸载等。</p></div>
+      <p>长按语音说话，识别后填入输入框或执行指令。支持打开应用、调音量、影视搜索、卸载等。</p></div>
     <div class="card"><div class="n">02</div><h3>自定义按键</h3>
-      <p>电视/视频键可自由绑定应用，短按打开、长按 2 秒重选。已在前台时不重复启动。</p></div>
+      <p>电视/视频可自由绑定应用，短按打开、长按 2 秒重选。已在前台时不重复启动。</p></div>
     <div class="card"><div class="n">03</div><h3>一键加速</h3>
-      <p>长按主页键清理后台，完成时洒下 34 片粉色彩带。</p></div>
+      <p>长按主页清理后台，完成时洒下 34 片粉色彩带。</p></div>
     <div class="card"><div class="n">04</div><h3>扫码输入</h3>
-      <p>按屏显键弹出二维码，手机扫码后打字，电视输入框实时同步，无需点发送。</p></div>
+      <p>按屏显弹出二维码，手机扫码后打字，电视输入框实时同步，无需点发送。</p></div>
     <div class="card"><div class="n">05</div><h3>手机遥控</h3>
       <p>触摸板单指移动、轻点单击、长按、双指滚动，底部三大导航键。</p></div>
     <div class="card"><div class="n">06</div><h3>稳定性设计</h3>
@@ -246,7 +247,7 @@ footer{margin-top:56px;padding-top:24px;border-top:1px solid #1A1A1F;
     </tr>
   </table>
   <div class="note">
-    隐藏 ≠ 卸载。被隐藏的应用仍能被语音或按键启动（比如影视仓桌面上有，但电视键也能直达）。
+    隐藏 ≠ 卸载。被隐藏的应用仍能被语音或按键启动（比如影视仓桌面上有，但电视也能直达）。
   </div>
 
   <h2>AirPlay 投屏</h2>
