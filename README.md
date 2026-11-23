@@ -165,6 +165,7 @@ adb shell getprop ro.vendor.nrdp.modelgroup
 | [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md) | 45 条需求演进记录（含踩坑顺序） |
 | [docs/PROMPT.md](docs/PROMPT.md) | 复刻这个项目的提示词 + 环境坑排查 |
 | [docs/AIRPLAY.md](docs/AIRPLAY.md) | AirPlay 投屏方案、部署步骤、踩坑 |
+| [docs/DESKTOP.md](docs/DESKTOP.md) | Aerial 桌面配置、应用精简清单、一键复刻脚本 |
 
 ---
 
